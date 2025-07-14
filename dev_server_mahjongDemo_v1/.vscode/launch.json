@@ -1,0 +1,71 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "CenterServer:Run after rebuild",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/center_server/bin/center_server", // 修改为你的程序路径
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/center_server/bin/",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb", // 修改为你的gdb路径
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "center_server full rebuild and prepare" // 关键点：指定前置任务
+        },
+        {
+            "name": "RoomServer:Run after rebuild",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/room_server/bin/room_server", // 修改为你的程序路径
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/room_server/bin/",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb", // 修改为你的gdb路径
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "room_server full rebuild and prepare" // 关键点：指定前置任务
+        },
+        {
+            "name": "GameServer:Run after rebuild",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/game11/bin/hzxlmj_server", // 修改为你的程序路径
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/game11/bin/",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb", // 修改为你的gdb路径
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "hzxlmj_server full rebuild and prepare" // 关键点：指定前置任务
+        }
+    ]
+}

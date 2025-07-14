@@ -1,0 +1,174 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+            "label": "check and kill center_server",
+            "type": "shell",
+            "command": "if pgrep -f './center_server' >/dev/null; then echo 'Stopping running center_server...'; pkill -f './center_server' && sleep 1; else echo 'center_server not running'; fi",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "echo": true
+            }
+        },
+		{
+            "label": "wait",
+            "type": "shell",
+            "command": "sleep 2"
+        },
+        {
+            "label": "make clean",
+            "type": "process",
+            "command": "make",
+            "args": ["clean"],
+            "options": {
+                "cwd": "${workspaceFolder}/center_server/src/"
+            }
+        },
+        {
+            "label": "make build",
+            "type": "process",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/center_server/src/"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "center_server full rebuild and prepare",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "check and kill center_server",
+				{
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+                "make clean",
+                {
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+                "make build",
+                {
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+            ],
+			"group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+
+
+        {
+            "label": "check and kill room_server",
+            "type": "shell",
+            "command": "if pgrep -f './room_server' >/dev/null; then echo 'Stopping running room_server...'; pkill -f './room_server' && sleep 1; else echo 'center_server not running'; fi",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "echo": true
+            }
+        },
+        {
+            "label": "make clean room_server",
+            "type": "process",
+            "command": "make",
+            "args": ["clean"],
+            "options": {
+                "cwd": "${workspaceFolder}/room_server/src/"
+            }
+        },
+        {
+            "label": "make build room_server",
+            "type": "process",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/room_server/src/"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "room_server full rebuild and prepare",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "check and kill room_server",
+				{
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+                "make clean room_server",
+                {
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+                "make build room_server",
+                {
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+            ],
+			"group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+
+        {
+            "label": "check and kill hzxlmj_server",
+            "type": "shell",
+            "command": "if pgrep -f './hzxlmj_server' >/dev/null; then echo 'Stopping running hzxlmj_server...'; pkill -f './hzxlmj_server' && sleep 1; else echo 'center_server not running'; fi",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "echo": true
+            }
+        },
+        {
+            "label": "make clean hzxlmj_server",
+            "type": "process",
+            "command": "make",
+            "args": ["clean"],
+            "options": {
+                "cwd": "${workspaceFolder}/game11/src/"
+            }
+        },
+        {
+            "label": "make build hzxlmj_server",
+            "type": "process",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/game11/src/"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "hzxlmj_server full rebuild and prepare",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "check and kill hzxlmj_server",
+				{
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+                "make clean hzxlmj_server",
+                {
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+                "make build hzxlmj_server",
+                {
+                    "label": "wait after kill",
+                    "dependsOn": "wait"
+                },
+            ],
+			"group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+	]
+}
